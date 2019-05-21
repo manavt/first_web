@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FirstWeb</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+    <% unless session[:user_id].nil? %>
+      <%= link_to "Logout", logout_path, method: :delete%>
+    <%end%>
+    <% flash.each do | _, value | %>
+      <%= value %>
+    <%end%>
+    <%= yield %>
+    </div>
+  </body>
+</html>
